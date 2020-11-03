@@ -448,8 +448,8 @@ def interaction():  # this is the cli for BOMBEM (windows)
             os.system("cls")
         elif windows_bombem == "scripts":
             print(ScriptsAndMenus.scripts_menu)
-        elif windows_bombem[4:]:
-            command = windows_bombem[4:]
+        elif windows_bombem[:2] == "os":
+            command = windows_bombem[3:]
             subprocess.call(command, shell=True)
 
         def running_modules():
@@ -706,7 +706,7 @@ filename                                the out file you want to save the image 
                     webcam_capture_module = input("%s(webcam capture module)%s [BOMBEM]:~#" % (Colors.red, Colors.end))
                     if webcam_capture_module == "back" or webcam_capture_module == "exit":
                         break
-                    elif windows_bombem == "options":
+                    elif webcam_capture_module == "options":
                         print(webcam_capture_options)
                     elif "set filename " in webcam_capture_module:
                         new_file = webcam_capture_module[filename_length:]
