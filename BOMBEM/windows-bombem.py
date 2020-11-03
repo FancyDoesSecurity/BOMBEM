@@ -789,12 +789,12 @@ default registry: HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Ru
                     elif "set key " in reg_persistence_module:
                         key = reg_persistence_module[key_length:]
                         print("key: %s" % key)
-                    elif reg_default is "true" or reg_default is "True" and reg_persistence_module == "run":
+                    elif reg_default == "true" and reg_persistence_module == "run":
                         reg_persist = PostExploitation(r_port="", r_host="")
                         reg_persist.RegistryPersistence(copy_name=exe_name, local_port=l_port, local_host=l_host,
                                                         add_new=False, registry_key=False)
                         print("[%s*%s] DONE" % (Colors.green, Colors.end))
-                    elif reg_default is "false" or reg_default is "False" and reg_persistence_module == "run":
+                    elif reg_default == "false" and reg_persistence_module == "run":
                         reg_persist = PostExploitation(r_port="", r_host="")
                         reg_persist.RegistryPersistence(copy_name=exe_name, local_port=l_port, local_host=l_host,
                                                         add_new=key, registry_key=True)
